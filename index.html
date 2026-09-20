@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Generate exact, hand-friendly matrix exercises and complete worked solutions.">
+  <title>Matrix Workshop</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23101828'/%3E%3Cpath d='M10 7H7v18h3M22 7h3v18h-3' fill='none' stroke='%23fff' stroke-width='2'/%3E%3Ccircle cx='13' cy='12' r='2' fill='%2357d9a3'/%3E%3Ccircle cx='19' cy='12' r='2' fill='%23ffb454'/%3E%3Ccircle cx='13' cy='20' r='2' fill='%23ffb454'/%3E%3Ccircle cx='19' cy='20' r='2' fill='%2357d9a3'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Matrix Workshop home">
+      <span class="brand-mark" aria-hidden="true">[·]</span>
+      <span>Matrix Workshop</span>
+    </a>
+    <div class="top-actions">
+      <span class="exact-badge"><span aria-hidden="true">◆</span> Exact arithmetic</span>
+      <button class="button ghost" id="copy-latex" type="button">Copy .tex</button>
+      <button class="button ghost" id="print-page" type="button">Print / PDF</button>
+    </div>
+  </header>
+
+  <main class="app-shell">
+    <aside class="control-panel" aria-labelledby="setup-title">
+      <div class="panel-kicker">Exercise setup</div>
+      <h1 id="setup-title">Build a matrix worth doing by hand.</h1>
+      <p class="panel-intro">Choose the lesson. Every generated step stays inside a classroom-sized arithmetic budget.</p>
+
+      <form id="generator-form">
+        <fieldset>
+          <legend>Matrix size</legend>
+          <div class="dimension-row">
+            <label>Rows<select id="rows" name="rows"><option>2</option><option selected>3</option><option>4</option><option>5</option></select></label>
+            <span aria-hidden="true">×</span>
+            <label>Columns<select id="cols" name="cols"><option>2</option><option selected>3</option><option>4</option><option>5</option></select></label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Topics</legend>
+          <div class="topic-grid">
+            <label class="topic-option"><input type="checkbox" name="topic" value="rref" checked><span><b>Row reduction</b><small>RREF or a linear system</small></span></label>
+            <label class="topic-option"><input type="checkbox" name="topic" value="inverse" checked><span><b>Inverse</b><small>Augmented-matrix method</small></span></label>
+            <label class="topic-option"><input type="checkbox" name="topic" value="diagonalization" checked><span><b>Diagonalization</b><small>Eigenvalues and eigenvectors</small></span></label>
+            <label class="topic-option"><input type="checkbox" name="topic" value="jcf"><span><b>Jordan form</b><small>Nontrivial Jordan chain</small></span></label>
+            <label class="topic-option"><input type="checkbox" name="topic" value="svd"><span><b>Full SVD</b><small>Exact orthonormal factors</small></span></label>
+          </div>
+          <p id="compatibility-note" class="field-note" role="status">Square matrix: all selected topics are available.</p>
+        </fieldset>
+
+        <fieldset id="rref-options">
+          <legend>Row reduction format</legend>
+          <div class="segmented" role="radiogroup" aria-label="Row reduction format">
+            <label><input type="radio" name="rrefMode" value="matrix" checked><span>Matrix</span></label>
+            <label><input type="radio" name="rrefMode" value="system"><span>Linear system</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Difficulty</legend>
+          <div class="segmented three" role="radiogroup" aria-label="Difficulty">
+            <label><input type="radio" name="difficulty" value="beginner"><span>Beginner</span></label>
+            <label><input type="radio" name="difficulty" value="standard" checked><span>Standard</span></label>
+            <label><input type="radio" name="difficulty" value="challenge"><span>Challenge</span></label>
+          </div>
+        </fieldset>
+
+        <label class="seed-label" for="seed">Seed <span>Shareable & reproducible</span></label>
+        <div class="seed-row">
+          <input id="seed" name="seed" value="MATH-314" spellcheck="false">
+          <button id="shuffle-seed" class="icon-button" type="button" aria-label="Create a new seed">↻</button>
+        </div>
+        <button class="button primary" id="generate" type="submit"><span>Generate exercise</span><span aria-hidden="true">→</span></button>
+      </form>
+    </aside>
+
+    <section class="workspace" aria-live="polite">
+      <div class="workspace-head">
+        <div>
+          <span class="eyebrow">Generated exercise</span>
+          <h2 id="exercise-title">A friendly 3 × 3 matrix</h2>
+        </div>
+        <div class="niceness-score" title="This example stays within the selected arithmetic budget">
+          <span class="score-number">8.9</span><span><b>Niceness</b><small>Standard</small></span>
+        </div>
+      </div>
+
+      <div class="view-tabs" role="tablist" aria-label="Document view">
+        <button role="tab" aria-selected="true" data-view="student">Student copy</button>
+        <button role="tab" aria-selected="false" data-view="answer">Answer key</button>
+      </div>
+
+      <article id="exercise-document" class="paper student-view">
+        <div class="paper-meta"><span>LINEAR ALGEBRA</span><span id="paper-seed">SEED MATH-314</span></div>
+        <section class="problem-block">
+          <p class="problem-number">01</p>
+          <div>
+            <h3>Work with the matrix</h3>
+            <div class="matrix-wrap"><span class="matrix-label">A =</span><div class="matrix" aria-label="matrix A"><span>2</span><span>0</span><span>0</span><span>1</span><span>3</span><span>0</span><span>1</span><span>1</span><span>4</span></div></div>
+            <ol id="task-list">
+              <li>Find the reduced row-echelon form of <i>A</i>.</li>
+              <li>Find <i>A</i><sup>−1</sup> using row reduction.</li>
+              <li>Diagonalize <i>A</i>, if possible.</li>
+            </ol>
+          </div>
+        </section>
+
+        <section class="solution-only solution-intro">
+          <span class="eyebrow">Complete solution</span>
+          <h3>Every transformation, with no arithmetic jumps.</h3>
+        </section>
+        <div id="solution-sections" class="solution-only">
+          <section class="solution-section">
+            <div class="section-index">01</div><div><h4>Row reduction</h4><p>Apply <span class="operation">R₃ ← R₃ − R₂</span>, then <span class="operation">R₃ ← R₃ − ½R₁</span>.</p><div class="equation-line">A &nbsp;⟶&nbsp; I₃</div></div>
+          </section>
+          <section class="solution-section">
+            <div class="section-index">02</div><div><h4>Characteristic polynomial</h4><p>Using the convention det(A − λI):</p><div class="equation-line">p(λ) = (2 − λ)(3 − λ)(4 − λ)</div></div>
+          </section>
+        </div>
+      </article>
+    </section>
+  </main>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
