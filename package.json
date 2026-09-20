@@ -1,0 +1,13 @@
+{
+  "name": "matrix-workshop",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Generate exact, hand-friendly linear algebra exercises and complete worked solutions.",
+  "type": "module",
+  "scripts": {
+    "test": "node tests/engine.test.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
